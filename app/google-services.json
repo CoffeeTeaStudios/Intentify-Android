@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "615609481665",
+    "firebase_url": "https://intentify-d020b.firebaseio.com",
+    "project_id": "intentify-d020b",
+    "storage_bucket": "intentify-d020b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615609481665:android:c0b1e04b620ee804",
+        "android_client_info": {
+          "package_name": "lawonga.intentify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615609481665-7g4456mpqnsi91709a23uvgj3hthb8ne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lawonga.intentify",
+            "certificate_hash": "705B015347A5D15B47F12FE238967795816ECEE6"
+          }
+        },
+        {
+          "client_id": "615609481665-sjfqcpp7rf382habfv20q1ut4munmt24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPuRDk8zLelPzJlB6RcYGIHx7Ae8EzW6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615609481665-sjfqcpp7rf382habfv20q1ut4munmt24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
