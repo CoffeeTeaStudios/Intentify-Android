@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -35,6 +36,8 @@ public class MainActivity extends BaseActivity implements
         ReloadFragment.OnFragmentInteractionListener,
         CategoryFragment.OnFragmentInteractionListener {
 
+    private static String TAG = "MainActivity";
+
     @BindView(R.id.frameLayout) FrameLayout frameLayout;
     @BindView(R.id.bottomBar) BottomBar bottomBar;
 
@@ -49,20 +52,16 @@ public class MainActivity extends BaseActivity implements
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                if (tabId == R.id.tab_pot) {
-                    PoolFragment poolFragment = PoolFragment.newInstance();
-                    ft.replace(R.id.frameLayout, poolFragment);
-                } else if (tabId == R.id.tab_discover) {
-                    LocationHelper.getInstance().startListeningForUpdates();
-                    DiscoverFragment discoverFragment = DiscoverFragment.getInstance();
-                    ft.replace(R.id.frameLayout, discoverFragment);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                if (tabId == R.id.tab_discover) {
+                    CategoryFragment categoryFragment = CategoryFragment.newInstance();
+                    fragmentTransaction.replace(R.id.frameLayout, categoryFragment);
                 } else if (tabId == R.id.tab_my) {
                     MyFragment myFragment = MyFragment.getInstance();
-                    ft.replace(R.id.frameLayout, myFragment);
+                    fragmentTransaction.replace(R.id.frameLayout, myFragment);
                 }
-                ft.addToBackStack(null);
-                ft.commit();
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
@@ -87,6 +86,10 @@ public class MainActivity extends BaseActivity implements
         if (id == R.id.action_filter) {
             Toast.makeText(MainActivity.this, "Filter Clicked", Toast.LENGTH_SHORT).show();
             return true;
+        } else if (id == R.id.action_buy_in) {
+            // Buy in
+            onBuyInPressed();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -99,10 +102,32 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onReloadPressed(Uri uri) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_right,
+                R.anim.enter_from_right, R.anim.exit_from_right);
         ReloadFragment reloadFragment = ReloadFragment.newInstance();
-        ft.replace(R.id.frameLayout, reloadFragment);
-        ft.addToBackStack(null);
-        ft.commit();
+        fragmentTransaction.replace(R.id.frameLayout, reloadFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void onBuyInPressed() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_right,
+                R.anim.enter_from_right, R.anim.exit_from_right);
+        BuyInFragment buyInFragment = BuyInFragment.getInstance();
+        fragmentTransaction.replace(R.id.frameLayout, buyInFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void onCategoryClicked() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+        DiscoverFragment discoverFragment = DiscoverFragment.getInstance();
+        fragmentTransaction.replace(R.id.frameLayout, discoverFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+        Log.e(TAG, "onCategoryClicked: alkdsfjkljasdflkj");
     }
 }

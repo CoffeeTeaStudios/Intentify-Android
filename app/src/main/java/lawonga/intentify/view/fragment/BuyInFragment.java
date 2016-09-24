@@ -53,7 +53,7 @@ public class BuyInFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_buy, container);
+        View view = inflater.inflate(R.layout.fragment_buy, container, false);
         ButterKnife.bind(this, view);
         return view;
     }

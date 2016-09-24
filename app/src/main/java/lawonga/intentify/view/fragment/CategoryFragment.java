@@ -3,12 +3,23 @@ package lawonga.intentify.view.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import lawonga.intentify.R;
+import lawonga.intentify.adapter.CategoryAdapter;
+import lawonga.intentify.helper.GambleReader;
+import lawonga.intentify.view.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,8 +30,9 @@ import lawonga.intentify.R;
  * create an instance of this fragment.
  */
 public class CategoryFragment extends Fragment {
-
+    @BindView(R.id.category_recyclerview) RecyclerView recyclerView;
     private OnFragmentInteractionListener mListener;
+    private ArrayList<String> categories;
 
     public CategoryFragment() {
         // Required empty public constructor
@@ -30,12 +42,10 @@ public class CategoryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment CategoryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CategoryFragment newInstance(String param1, String param2) {
+    public static CategoryFragment newInstance() {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -47,13 +57,29 @@ public class CategoryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+//                    LocationHelper.getInstance().startListeningForUpdates();
+
+        // Retrieve pool models
+        categories = GambleReader.getInstance().getCategories();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        ButterKnife.bind(this, view);
+
+        // Adapter settings
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new CategoryAdapter((MainActivity) getActivity(), categories));
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

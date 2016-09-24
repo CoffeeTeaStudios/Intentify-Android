@@ -5,6 +5,7 @@ import lawonga.intentify.keys.KeyLevel2;
 import lawonga.intentify.model.IntentionModel;
 
 /**
+ * @deprecated
  * Created by Andy on 9/23/2016.
  */
 public class IntentionHelper {

@@ -76,5 +76,7 @@ dependencies {
     // Bottom Bar
     compile 'com.roughike:bottom-bar:2.0.2'
 
+    compile 'com.afollestad:sectioned-recyclerview:0.2.3'
+
 }
 apply plugin: 'com.google.gms.google-services'
