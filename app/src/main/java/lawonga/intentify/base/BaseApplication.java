@@ -2,6 +2,8 @@ package lawonga.intentify.base;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.Region;
@@ -45,6 +47,14 @@ public class BaseApplication extends Application implements BootstrapNotifier {
 
         Region region = new Region("com.example.myapp.boostrapRegion", null, null, null);
         regionBootstrap = new RegionBootstrap(this, region);
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+        // Normal app init code...
     }
 
     @Override

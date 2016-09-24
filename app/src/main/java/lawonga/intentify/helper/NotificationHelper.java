@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import lawonga.intentify.MainActivity;
+import lawonga.intentify.view.MainActivity;
 import lawonga.intentify.R;
 
 /**

@@ -1,17 +1,17 @@
-package lawonga.intentify;
+package lawonga.intentify.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lawonga.intentify.R;
 import lawonga.intentify.base.BaseActivity;
 import lawonga.intentify.helper.LocationHelper;
 
@@ -21,14 +21,13 @@ import lawonga.intentify.helper.LocationHelper;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.startListeningTapTarget) TextView locationTapTarget;
-
+    @BindView(R.id.frameLayout) FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,7 +40,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        locationTapTarget.setOnClickListener(new View.OnClickListener() {
+        frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LocationHelper.getInstance().startListeningForUpdates();
