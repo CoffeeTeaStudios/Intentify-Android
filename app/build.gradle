@@ -73,5 +73,8 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
 
+    // Bottom Bar
+    compile 'com.roughike:bottom-bar:2.0.2'
+
 }
 apply plugin: 'com.google.gms.google-services'
