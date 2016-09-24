@@ -14,7 +14,9 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
+        android:id="@+id/startListeningTapTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Click Here"
+        android:textSize="@dimen/header_1"/>
 </RelativeLayout>

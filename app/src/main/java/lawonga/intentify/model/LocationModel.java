@@ -6,6 +6,11 @@ package lawonga.intentify.model;
 public class LocationModel {
     double lat, lon;
 
+    public LocationModel(double lon, double lat) {
+        this.lon = lon;
+        this.lat = lat;
+    }
+
     public double getLat() {
         return lat;
     }
