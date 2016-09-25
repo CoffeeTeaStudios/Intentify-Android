@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "615609481665",
-    "firebase_url": "https://intentify-d020b.firebaseio.com",
-    "project_id": "intentify-d020b",
-    "storage_bucket": "intentify-d020b.appspot.com"
+    "project_number": "1047074437236",
+    "firebase_url": "https://vswdip.firebaseio.com",
+    "project_id": "vswdip",
+    "storage_bucket": "vswdip.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:615609481665:android:c0b1e04b620ee804",
+        "mobilesdk_app_id": "1:1047074437236:android:7aa6323f57c4fcbb",
         "android_client_info": {
           "package_name": "lawonga.intentify"
         }
       },
       "oauth_client": [
         {
-          "client_id": "615609481665-7g4456mpqnsi91709a23uvgj3hthb8ne.apps.googleusercontent.com",
+          "client_id": "1047074437236-hsdnbolvnb9kmdd312full13gkmp8cr3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "lawonga.intentify",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "615609481665-sjfqcpp7rf382habfv20q1ut4munmt24.apps.googleusercontent.com",
+          "client_id": "1047074437236-r5vm14c9tib2602gknopptffdud873hl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAPuRDk8zLelPzJlB6RcYGIHx7Ae8EzW6Q"
+          "current_key": "AIzaSyD9-Q4zPp5hc6wgqiaN35A3mMZHTl8LWB0"
         }
       ],
       "services": {
@@ -40,7 +40,14 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "615609481665-sjfqcpp7rf382habfv20q1ut4munmt24.apps.googleusercontent.com",
+              "client_id": "1047074437236-6qk3a3848k2fugfokvn6usae18vqs2n8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Kelvin.Poolio"
+              }
+            },
+            {
+              "client_id": "1047074437236-r5vm14c9tib2602gknopptffdud873hl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

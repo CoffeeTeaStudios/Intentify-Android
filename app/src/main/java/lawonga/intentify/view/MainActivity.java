@@ -24,6 +24,7 @@ import lawonga.intentify.view.fragment.CategoryFragment;
 import lawonga.intentify.view.fragment.DiscoverFragment;
 import lawonga.intentify.view.fragment.MyFragment;
 import lawonga.intentify.view.fragment.PoolFragment;
+import lawonga.intentify.view.fragment.PresenterFragment;
 import lawonga.intentify.view.fragment.ReloadFragment;
 
 /**
@@ -65,7 +66,12 @@ public class MainActivity extends BaseActivity implements
             }
         });
 
-        bottomBar.selectTabAtPosition(0);
+//        bottomBar.selectTabAtPosition(0);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        PresenterFragment presenterFragment = PresenterFragment.getInstance();
+        fragmentTransaction.replace(R.id.frameLayout, presenterFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
