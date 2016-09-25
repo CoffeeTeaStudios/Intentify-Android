@@ -12,5 +12,8 @@ public enum KeyLevel1 {
     GAMBLE,
     TOKEN,
 
+    gamble,
+    pools, users, gambles, tokens,
+
 
 }

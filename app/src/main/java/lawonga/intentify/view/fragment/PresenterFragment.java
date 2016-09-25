@@ -19,22 +19,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawonga.intentify.R;
+import lawonga.intentify.helper.FirebaseHelper;
 import lawonga.intentify.view.MainActivity;
 
 /**
  * Created by Andy on 9/24/2016.
  * Simulates:
- *
+ * <p/>
  * 1) Bar going up
  * 2) Bar cashed in (resets bar)
- *
+ * <p/>
  * 3) Simulate a notification saying game has ended/end of round
  */
-public class PresenterFragment extends Fragment{
+public class PresenterFragment extends Fragment {
 
 
-    public static PresenterFragment getInstance(){
+    public static PresenterFragment getInstance() {
         PresenterFragment presenterFragment = new PresenterFragment();
+        FirebaseHelper.getInstance().setUserId();
         return presenterFragment;
     }
 
@@ -50,35 +52,34 @@ public class PresenterFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_presenter, container, false);
+        View view = inflater.inflate(R.layout.fragment_presenter, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @OnClick(R.id.step_1)
-    public void addATokenToBar(){
-
+    public void addATokenToBar() {
+        FirebaseHelper.getInstance().writeToken();
     }
 
-
     @OnClick(R.id.step_2)
-    public void add15Tokens(){
-
+    public void add10Tokens() {
+        FirebaseHelper.getInstance().writeTenTokens();
     }
 
     @OnClick(R.id.step_3)
-    public void resetBar(){
-
+    public void resetBar() {
+        FirebaseHelper.getInstance().resetTokens();
     }
 
     @OnClick(R.id.step_4)
-    public void simulateNotification(){
+    public void simulateNotification() {
         Intent intent = new Intent(getActivity(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity())
                 .setSmallIcon(R.drawable.common_ic_googleplayservices)
                 .setContentTitle("Dip has finished!")
@@ -91,6 +92,11 @@ public class PresenterFragment extends Fragment{
                 (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    }
+
+    @OnClick(R.id.step_5)
+    public void readFirstToken() {
+        FirebaseHelper.getInstance().readFirstToken();
     }
 
 }

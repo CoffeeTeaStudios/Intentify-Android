@@ -28,4 +28,7 @@ public enum KeyLevel2 {
      */
     POOL,
 
+    maximumTokens,
+    name,
+    pools
 }

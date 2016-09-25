@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import lawonga.intentify.keys.KeyLevel3;
 import lawonga.intentify.keys.PrefKey;
 
 /**
@@ -28,5 +29,13 @@ public class PreferencesHelper {
     private PreferencesHelper() {
     }
 
+    public void setUniqueIdentifier(String uniqueIdentifier) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(KeyLevel3.uniqueIdentifier.name(), uniqueIdentifier);
+        editor.apply();
+    }
 
+    public String getUniqueIdentifier(){
+        return sharedPref.getString(KeyLevel3.uniqueIdentifier.name(), "");
+    }
 }
